@@ -1,0 +1,18 @@
+version: '2'
+
+volumes:
+  gomux-postgres-data:
+    driver: local
+
+services:
+  postgres:
+    image: postgres:11
+    container_name: gomux-postgres
+    volumes:
+      - gomux-postgres-data:/var/lib/postgresql/data
+    ports:
+      - "7654:5432"
+    environment:
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=homestead
+      - POSTGRES_USER=homestead
